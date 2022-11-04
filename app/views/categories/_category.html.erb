@@ -1,0 +1,21 @@
+
+<div class="container mt-5 pb-4">
+  <h2 class="pb-2 border-bottom">Our <%= category.name %>s </h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% @category.doctors.each do |doctor| %>
+        <div class="col">
+          <div class="card shadow-sm">
+            <%= cl_image_tag doctor.avatar.key, class:"card-img-top"%>
+            <div class="card-body">
+              <h2 class="card-text"> <%= doctor.full_name %> <h2>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= link_to "Appointment", new_appointment_path(id: doctor.id), class: "btn btn-sm btn-outline-secondary" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>

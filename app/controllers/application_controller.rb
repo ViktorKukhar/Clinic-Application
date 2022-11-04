@@ -14,7 +14,7 @@ def after_sign_in_path_for(resource)
   elsif resource.is_a?(Doctor)
     root_path
   else
-   some_other_path || root_path
+   root_path
   end
 end
 end

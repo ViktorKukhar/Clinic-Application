@@ -1,0 +1,28 @@
+
+<section class="form-auth text-center p-md-5 mt-5 border rounded-3 bg-light">
+
+
+<%= form_with(model: appointment) do |form| %>
+<% if appointment.errors.any? %>
+  <div style="color: red">
+    <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+    <ul>
+      <% appointment.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+    <h1 class="h3 mb-3 fw-normal">Appointment</h1>
+
+      <%= form.text_field :doctor_id, class: "form-control", placeholder: "Doctor" %>
+
+      <%= form.datetime_field :date, class: "form-control mb-3"%>
+
+
+    <%= form.submit "Lets go", class: "w-100 btn btn-lg btn-primary" %>
+
+<% end %>
+
+</section>

@@ -1,0 +1,11 @@
+development:
+  cloud_name: "dj32l3nff"
+  api_key: "662686382247666"
+  api_secret: "wtW7bSp90w4qXQfDMg2XqKOXbho"
+  secure: true
+
+production:
+  cloud_name: "dj32l3nff"
+  api_key: "662686382247666"
+  api_secret: "wtW7bSp90w4qXQfDMg2XqKOXbho"
+  secure: true

@@ -1,23 +1,24 @@
 ActiveAdmin.register Doctor do
 
-  permit_params :first_name, :last_name, :email, :password, :password_confirmation
+  permit_params :first_name, :last_name, :email, :password, :password_confirmation, :category_id, :avatar
 
   index do
     selectable_column
     id_column
+    column :category
     column :first_name
     column :last_name
     column :email
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
+    column :category
     actions
   end
 
   filter :email
-  filter :current_sign_in_at
-  filter :sign_in_count
-  filter :created_at
+  filter :category
+
 
   form do |f|
     f.inputs do
@@ -26,8 +27,11 @@ ActiveAdmin.register Doctor do
       f.input :email
       f.input :password
       f.input :password_confirmation
+      f.input :category
+      f.input :avatar, as: :file
     end
     f.actions
   end
+
 
 end

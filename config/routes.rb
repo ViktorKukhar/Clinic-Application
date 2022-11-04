@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :appointments
+  resources :categories
+
   devise_for :doctors, path: 'doctors', controllers: { sessions: "doctors/sessions" }
   devise_for :users, path: 'users', controllers: { sessions: "users/sessions" }
   devise_for :admin_users, ActiveAdmin::Devise.config

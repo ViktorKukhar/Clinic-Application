@@ -3,4 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :recoverable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
-end
+
+  has_many :appointments
+
+  has_many :doctors, through: :appointments
+
+  def full_name
+  "#{first_name} #{last_name}"
+  end
+  end
