@@ -1,0 +1,21 @@
+<div class="container py-5">
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <% @user.appointments.each do |appointment,doctor,category| %>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal"><%= appointment.doctor.category.name %></h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title"><%= appointment.doctor.full_name %></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li class="h5">Wait you at: </li>
+                <li class="h5"> <%= appointment.date %></li>
+              </ul>
+              <%= button_to "Cancel", appointment, method: :delete, class: "w-100 btn btn-lg btn-danger" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>

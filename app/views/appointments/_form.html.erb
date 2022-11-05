@@ -15,9 +15,8 @@
   </div>
 <% end %>
     <h1 class="h3 mb-3 fw-normal">Appointment</h1>
-
-      <%= form.text_field :doctor_id, class: "form-control", placeholder: "Doctor" %>
-
+      <h5 class="h5 mb-3 fw-normal"><%= @doctor.full_name %> can meet you at: </h2>
+      <%= form.hidden_field :doctor_id, value: @doctor.id %>
       <%= form.datetime_field :date, class: "form-control mb-3"%>
 
 

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :appointments
+  resources :appointments do
+    member do
+      get :flop
+    end
+  end
   resources :categories
 
   devise_for :doctors, path: 'doctors', controllers: { sessions: "doctors/sessions" }
@@ -14,8 +18,6 @@ Rails.application.routes.draw do
   devise_scope :doctor do
   get 'doctor/profile/:id' => 'doctors/sessions#profile', as: :doctor_profile
   end
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+
 end
