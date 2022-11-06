@@ -19,7 +19,7 @@ class AppointmentsController < InheritedResources::Base
     # @appointment.doctor_id = @doctor
     respond_to do |format|
       if @appointment.save
-        format.html { redirect_to appointment_url(@appointment), notice: "appointment was successfully created." }
+        format.html { redirect_to appointment_url(@appointment), notice: "Appointment was successfully created." }
         format.json { render :show, status: :created, location: @appointment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -37,7 +37,7 @@ class AppointmentsController < InheritedResources::Base
     @appointment.destroy
 
   respond_to do |format|
-    format.html { redirect_to profile_path, notice: "Property was successfully destroyed." }
+    format.html { redirect_to profile_path, notice: "Appointment was successfully canceled." }
     format.json { head :no_content }
   end
 end

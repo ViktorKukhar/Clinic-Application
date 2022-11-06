@@ -1,2 +1,9 @@
+<% if @doctor.appointments.where(open: true ).exists? %>
 <%= render "latest_appointment" %>
+<% end %>
+<% if @doctor.appointments.where(open: false ).exists?%>
 <%= render "closed_appointment" %>
+<% end %>
+<% if !@doctor.appointments.exists?%>
+  <h1>You dont have appointments yet</h1>
+<% end %>

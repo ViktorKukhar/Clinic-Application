@@ -4,3 +4,6 @@
 <% if @user.appointments.where(open: false ).exists?%>
 <%= render "closed_appointment" %>
 <% end %>
+<% if !@user.appointments.exists?%>
+  <h1>You dont have appointments yet</h1>
+<% end %>

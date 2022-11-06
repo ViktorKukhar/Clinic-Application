@@ -2,6 +2,7 @@
 
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
     <h1 class="h3 mb-3 fw-normal pt-5">Please Login</h1>
 
       <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "Email" %>
