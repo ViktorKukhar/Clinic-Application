@@ -1,0 +1,24 @@
+<div class="container py-5">
+  <h1 class="border-bottom pt-4">Closed appointments</h1>
+  <div class="row row-cols-1 row-cols-md-3 mb-3 pt-2 text-center">
+    <% @user.appointments.where(open: false).each do |appointment,doctor,category| %>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm ">
+            <div class="card-header py-3 bg-secondary bg-opacity-50 ">
+              <h4 class="my-0 fw-normal"><%= appointment.doctor.category.name %></h4>
+            </div>
+            <div class="card-body ">
+              <h1 class="card-title pricing-card-title fw-bold"><%= appointment.doctor.full_name %></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li class="h5 fw-light">Doctors recommendation: </li>
+                <li class="h5"> <%= appointment.recommendation %></li>
+              </ul>
+              <div class="d-flex justify-content-end"">
+              <small class=""><%= appointment.date.strftime('%b %d %H:%M') %></small>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>

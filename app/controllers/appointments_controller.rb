@@ -1,15 +1,18 @@
 class AppointmentsController < InheritedResources::Base
   before_action :set_doctor, only: [ :new ]
+  before_action :set_doctor, only: [ :new ]
 
   def set_doctor
     @doctor = Doctor.find(params[:id])
   end
+
   def flop
     @appointment = Appointment.find(params[:id])
     @appointment.open = false
     @appointment.save
-    redirect_to root_path
+    redirect_back fallback_location: doctor_profile_path
   end
+
   def create
     @appointment = Appointment.new(appointment_params)
     @appointment.user_id = current_user.id
@@ -25,6 +28,10 @@ class AppointmentsController < InheritedResources::Base
     end
   end
 
+  def update
+    redirect_to :action => 'flop'
+  end
+
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
@@ -38,7 +45,7 @@ end
   private
 
     def appointment_params
-      params.require(:appointment).permit(:doctor_id, :user_id, :date, :open)
+      params.require(:appointment).permit(:doctor_id, :user_id, :date, :open, :recommendation)
     end
 
 end

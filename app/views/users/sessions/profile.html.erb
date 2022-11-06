@@ -1,1 +1,6 @@
+<% if @user.appointments.where(open: true ).exists? %>
 <%= render "latest_appointment" %>
+<% end %>
+<% if @user.appointments.where(open: false ).exists?%>
+<%= render "closed_appointment" %>
+<% end %>

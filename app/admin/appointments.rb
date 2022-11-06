@@ -1,6 +1,6 @@
 ActiveAdmin.register Appointment do
 
-  permit_params :doctor_id, :user_id, :date
+  permit_params :doctor_id, :user_id, :date, :recommendation, :open
 
   index do
     selectable_column
@@ -20,6 +20,9 @@ ActiveAdmin.register Appointment do
       f.input :date
       f.input :doctor
       f.input :user
+      f.input :recommendation
+      f.input :open
+
 
     end
     f.actions

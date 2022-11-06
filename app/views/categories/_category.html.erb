@@ -10,7 +10,11 @@
               <h2 class="card-text"> <%= doctor.full_name %> <h2>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
+                  <% if user_signed_in? %>
                   <%= link_to "Appointment", new_appointment_path(id: doctor.id), class: "btn btn-sm btn-outline-secondary" %>
+                  <% else %>
+                  <%= link_to "Appointment", new_user_session_path, class: "btn btn-sm btn-outline-secondary" %>
+                  <% end %>
                 </div>
               </div>
             </div>
