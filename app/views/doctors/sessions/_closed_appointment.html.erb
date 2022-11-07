@@ -10,10 +10,9 @@
             <div class="card-body">
               <ul class="list-unstyled mt-3 mb-4">
                 <li class="h5">Wait you at: </li>
-                <li class="h5"> <%= appointment.date %></li>
-                <li class="h5"> <%= appointment.recommendation %></li>
+                <li class="h5"> <%= appointment.date.strftime('%b %d %H:%M') %></li>
+                <li class="h5 fw-light"> <%= appointment.recommendation %></li>
               </ul>
-
             </div>
           </div>
         </div>

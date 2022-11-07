@@ -1,4 +1,3 @@
-
 <div class="container py-5">
   <h1 class="border-bottom pt-4">Your appointments:</h1>
   <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
@@ -11,15 +10,15 @@
             <div class="card-body">
               <ul class="list-unstyled mt-3 mb-4">
                 <li class="h5">Wait you at: </li>
-                <li class="h5"> <%= appointment.date %></li>
+                <li class="h5 fw-light"> <%= appointment.date.strftime('%b %d %H:%M') %></li>
               </ul>
                 <div class="row">
                 <div class="col">
                     <%= button_to "Cancel", appointment, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}}, class: "w-100 btn btn-lg btn-danger" %>
                 </div>
                 <%= form_with(model: appointment) do |form| %>
-                <%= form.label :recommendation, style: "display: block pt-2" %>
-                <%= form.text_area :recommendation, rows: 4, cols: 60, class: "form-control" %>
+                <%= form.label :recommendation, class: "fs-5 fw-light pt-1" %>
+                <%= form.text_area :recommendation, rows: 4, cols: 60, class: "form-control", placeholder: "I recommend you..." %>
                 <%= form.submit "Send recommendation", class: "w-100 btn btn-lg btn-primary" %>
                 <% end %>
               </div>

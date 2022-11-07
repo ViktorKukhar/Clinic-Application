@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 Category.create!(name: 'Urologist', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla, felis sed faucibus maximus, ligula dolor ultrices purus, sit amet rutrum magna elit a sem.')
 Category.create!(name: 'Nutritionist', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla, felis sed faucibus maximus, ligula dolor ultrices purus, sit amet rutrum magna elit a sem.')
 Category.create!(name: 'Dermatologist', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla, felis sed faucibus maximus, ligula dolor ultrices purus, sit amet rutrum magna elit a sem.')
@@ -15,43 +15,184 @@ Category.create!(name: 'Orthopaedist', description: 'Lorem ipsum dolor sit amet,
 Category.create!(name: 'Traumatologist', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla, felis sed faucibus maximus, ligula dolor ultrices purus, sit amet rutrum magna elit a sem.')
 Doctor.create!(first_name: 'Vito',
                last_name: 'Corleone',
+               phone: '+380524349089',
                email: 'vitocorleone@gmail.com',
-               password: 'vito2001',
-               password_confirmation: 'vito2001',
+               password: 'vito1111',
+               password_confirmation: 'vito1111',
                category_id: 1)
 Doctor.create!(first_name: 'Michael',
                 last_name: 'Corleone',
+                phone: '+380734649007',
                 email: 'michaelcorleone@gmail.com',
-                password: 'michael2001',
-                password_confirmation: 'michael2001',
-                category_id: 2)
+                password: 'michael1111',
+                password_confirmation: 'michael1111',
+                category_id: 1)
 Doctor.create!(first_name: 'Santino',
                last_name: 'Corleone',
+               phone: '+380734340734',
                email: 'santinocorleone@gmail.com',
-               password: 'santino2001',
-               password_confirmation: 'santino2001',
-               category_id: 3)
+               password: 'santino1111',
+               password_confirmation: 'santino1111',
+               category_id: 2)
 Doctor.create!(first_name: 'Fredo',
                 last_name: 'Corleone',
+                phone: '+380434349089',
                 email: 'fredocorleone@gmail.com',
-                password: 'fredo2001',
-                password_confirmation: 'fredo2001',
-                category_id: 4)
+                password: 'fredo1111',
+                password_confirmation: 'fredo1111',
+                category_id: 2)
 Doctor.create!(first_name: 'Vincent',
                last_name: 'Corleone',
+               phone: '+380434349084',
                email: 'vincentcorleone@gmail.com',
-               password: 'vincent2001',
-               password_confirmation: 'vincent2001',
-               category_id: 5)
+               password: 'vincent1111',
+               password_confirmation: 'vincent1111',
+               category_id: 3)
 Doctor.create!(first_name: 'Connie',
                 last_name: 'Corleone',
+                phone: '+380434346745',
                 email: 'conniecorleone@gmail.com',
-                password: 'connie2001',
-                password_confirmation: 'connie2001',
-                category_id: 6)
+                password: 'connie1111',
+                password_confirmation: 'connie1111',
+                category_id: 3)
 Doctor.create!(first_name: 'Anthony',
                last_name: 'Corleone',
+               phone: '+380444349089',
                email: 'anthonycorleone@gmail.com',
-               password: 'anthony2001',
-               password_confirmation: 'anthony2001',
+               password: 'anthony1111',
+               password_confirmation: 'anthony1111',
+               category_id: 4)
+Doctor.create!(first_name: 'Roberto',
+               last_name: 'Corleone',
+               phone: '+380634349089',
+               email: 'robertocorleone@gmail.com',
+               password: 'roberto1111',
+               password_confirmation: 'roberto1111',
+               category_id: 4)
+Doctor.create!(first_name: 'Alexander',
+                last_name: 'Corleone',
+                phone: '+380234349089',
+                email: 'alexandercorleone@gmail.com',
+                password: 'alexander1111',
+                password_confirmation: 'alexander1111',
+                category_id: 5)
+Doctor.create!(first_name: 'Cristiano',
+               last_name: 'Corleone',
+               phone: '+380434399089',
+               email: 'cristianocorleone@gmail.com',
+               password: 'cristiano1111',
+               password_confirmation: 'cristiano1111',
+               category_id: 5)
+Doctor.create!(first_name: 'Leonardo',
+                last_name: 'Corleone',
+                phone: '+380434349000',
+                email: 'leonadrocorleone@gmail.com',
+                password: 'leonadro1111',
+                password_confirmation: 'leonadro1111',
+                category_id: 6)
+Doctor.create!(first_name: 'Johnny',
+               last_name: 'Corleone',
+               phone: '+380534349089',
+               email: 'johnnycorleone@gmail.com',
+               password: 'johnny1111',
+               password_confirmation: 'johnny1111',
+               category_id: 6)
+Doctor.create!(first_name: 'Mari',
+                last_name: 'Corleone',
+                phone: '+380934349089',
+                email: 'maricorleone@gmail.com',
+                password: 'mari1111',
+                password_confirmation: 'mari1111',
+                category_id: 7)
+Doctor.create!(first_name: 'Albert',
+               last_name: 'Corleone',
+               phone: '+380534319089',
+               email: 'albertcorleone@gmail.com',
+               password: 'albert1111',
+               password_confirmation: 'albert1111',
                category_id: 7)
+
+User.create!(first_name: 'Luca',
+               last_name: 'Brasi',
+               phone: '+380531319089',
+               email: 'lucabrasi@gmail.com',
+               password: 'luca1111',
+               password_confirmation: 'luca1111')
+User.create!(first_name: 'Peter',
+                last_name: 'Clemenza',
+                phone: '+380534311089',
+                email: 'peterclemenza@gmail.com',
+                password: 'peter1111',
+                password_confirmation: 'peter1111')
+User.create!(first_name: 'Frank',
+               last_name: 'Pantangeli',
+               phone: '+380534319189',
+               email: 'frankpantangeli@gmail.com',
+               password: 'frank1111',
+               password_confirmation: 'frank1111')
+User.create!(first_name: 'Emilio',
+                last_name: 'Barzini',
+                phone: '+380534319019',
+                email: 'emiliobarzini@gmail.com',
+                password: 'emilio1111',
+                password_confirmation: 'emilio1111')
+User.create!(first_name: 'Carlo',
+               last_name: 'Rizzi',
+               phone: '+380534329089',
+               email: 'carlorizzi@gmail.com',
+               password: 'carlo1111',
+               password_confirmation: 'carlo1111')
+User.create!(first_name: 'Virgil',
+                last_name: 'Sollozzo',
+                phone: '+380533319089',
+                email: 'virgilsollozzo@gmail.com',
+                password: 'virgil1111',
+                password_confirmation: 'virgil1111')
+User.create!(first_name: 'Amerigo',
+               last_name: 'Bonasera',
+               phone: '+380534819089',
+               email: 'amerigobonasera@gmail.com',
+               password: 'amerigo1111',
+               password_confirmation: 'amerigo1111')
+User.create!(first_name: 'Cardinal',
+               last_name: 'Lamberto',
+               phone: '+380534379089',
+               email: 'cardinallamberto@gmail.com',
+               password: 'cardinal1111',
+               password_confirmation: 'cardinal1111')
+User.create!(first_name: 'Antonio',
+                last_name: 'Andolini',
+                phone: '+380534313089',
+                email: 'antonioandolini@gmail.com',
+                password: 'antonio1111',
+                password_confirmation: 'antonio1111')
+User.create!(first_name: 'Paolo',
+               last_name: 'Andolini',
+               phone: '+380534313189',
+               email: 'paoloandolini@gmail.com',
+               password: 'paolo1111',
+               password_confirmation: 'paolo1111')
+User.create!(first_name: 'Tom',
+                last_name: 'Hagen',
+                phone: '+380534569089',
+                email: 'tomhagen@gmail.com',
+                password: 'tom1111',
+                password_confirmation: 'tom1111')
+User.create!(first_name: 'Vincent',
+               last_name: 'Mancini',
+               phone: '+380531119089',
+               email: 'vincentmancini@gmail.com',
+               password: 'vincent1111',
+               password_confirmation: 'vincent1111')
+User.create!(first_name: 'Johnny',
+                last_name: 'Fontane',
+                phone: '+380534311234',
+                email: 'johnnyfontane@gmail.com',
+                password: 'johnny1111',
+                password_confirmation: 'johnny1111')
+User.create!(first_name: 'Riccardo',
+               last_name: 'Tattaglia',
+               phone: '+380534311740',
+               email: 'riccardotattaglia@gmail.com',
+               password: 'riccardo1111',
+               password_confirmation: 'riccardo1111')

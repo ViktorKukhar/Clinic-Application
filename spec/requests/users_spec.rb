@@ -7,6 +7,7 @@ RSpec.describe "Users", type: :request do
                      first_name: 'Vito',
                      last_name: 'Corleone',
                      email: 'vitocorleone@gmail.com',
+                     phone: "+380000000000",
                      password: 'vito2001',
                      password_confirmation: 'vito2001')
       expect(User.last.email).to eq("vitocorleone@gmail.com")

@@ -1,27 +1,19 @@
-
 <section class="form-auth text-center p-md-5 mt-5 border rounded-3 bg-light">
-
-
-<%= form_with(model: appointment) do |form| %>
-<% if appointment.errors.any? %>
-  <div style="color: red">
-    <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
-
-    <ul>
-      <% appointment.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-    <h1 class="h3 mb-3 fw-normal">Appointment</h1>
-      <h5 class="h5 mb-3 fw-normal"><%= @doctor.full_name %> can meet you at: </h2>
-      <%= form.hidden_field :doctor_id, value: @doctor.id %>
-      <%= form.datetime_field :date, class: "form-control mb-3"%>
-
-
-    <%= form.submit "Lets go", class: "w-100 btn btn-lg btn-primary" %>
-
-<% end %>
-
+  <%= form_with(model: appointment) do |form| %>
+  <% if appointment.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+      <ul>
+        <% appointment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+      <h1 class="h3 mb-3 fw-normal">Appointment</h1>
+        <h5 class="h5 mb-3 fw-normal"><%= @doctor.full_name %> can meet you at: </h5>
+        <%= form.hidden_field :doctor_id, value: @doctor.id %>
+        <%= form.datetime_field :date, class: "form-control mb-3"%>
+        <%= form.submit "Lets go", class: "w-100 btn btn-lg btn-primary" %>
+  <% end %>
 </section>

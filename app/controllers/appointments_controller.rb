@@ -10,7 +10,7 @@ class AppointmentsController < InheritedResources::Base
     @appointment = Appointment.find(params[:id])
     @appointment.open = false
     @appointment.save
-    redirect_back fallback_location: doctor_profile_path
+    redirect_back fallback_location: doctor_profile_path, notice: "Recommendation was successfully send and appoiment was closed."
   end
 
   def create
@@ -29,17 +29,26 @@ class AppointmentsController < InheritedResources::Base
   end
 
   def update
-    redirect_to :action => 'flop'
+    @appointment = Appointment.find(params[:id])
+    respond_to do |format|
+      if @appointment.update(appointment_params)
+        format.html { redirect_to :action => 'flop', notice: "Property was successfully updated." }
+        format.json { render :show, status: :ok, location: @appointment }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @appointment.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
 
-  respond_to do |format|
-    format.html { redirect_to profile_path, notice: "Appointment was successfully canceled." }
-    format.json { head :no_content }
-  end
+    respond_to do |format|
+      format.html { redirect_to profile_path, notice: "Appointment was successfully canceled." }
+      format.json { head :no_content }
+    end
 end
 
   private
