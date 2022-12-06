@@ -1,0 +1,1002 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.4
+-- Dumped by pg_dump version 14.4
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: active_admin_comments; Type: TABLE; Schema: public; Owner: clinic
+--
+
+CREATE TABLE public.active_admin_comments (
+    id bigint NOT NULL,
+    namespace character varying,
+    body text,
+    resource_type character varying,
+    resource_id bigint,
+    author_type character varying,
+    author_id bigint,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.active_admin_comments OWNER TO clinic;
+
+--
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: clinic
+--
+
+CREATE SEQUENCE public.active_admin_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_admin_comments_id_seq OWNER TO clinic;
+
+--
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: clinic
+--
+
+ALTER SEQUENCE public.active_admin_comments_id_seq OWNED BY public.active_admin_comments.id;
+
+
+--
+-- Name: active_storage_attachments; Type: TABLE; Schema: public; Owner: clinic
+--
+
+CREATE TABLE public.active_storage_attachments (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    record_type character varying NOT NULL,
+    record_id bigint NOT NULL,
+    blob_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_attachments OWNER TO clinic;
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE; Schema: public; Owner: clinic
+--
+
+CREATE SEQUENCE public.active_storage_attachments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_attachments_id_seq OWNER TO clinic;
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: clinic
+--
+
+ALTER SEQUENCE public.active_storage_attachments_id_seq OWNED BY public.active_storage_attachments.id;
+
+
+--
+-- Name: active_storage_blobs; Type: TABLE; Schema: public; Owner: clinic
+--
+
+CREATE TABLE public.active_storage_blobs (
+    id bigint NOT NULL,
+    key character varying NOT NULL,
+    filename character varying NOT NULL,
+    content_type character varying,
+    metadata text,
+    service_name character varying NOT NULL,
+    byte_size bigint NOT NULL,
+    checksum character varying,
+    created_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_blobs OWNER TO clinic;
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE; Schema: public; Owner: clinic
+--
+
+CREATE SEQUENCE public.active_storage_blobs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_blobs_id_seq OWNER TO clinic;
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: clinic
+--
+
+ALTER SEQUENCE public.active_storage_blobs_id_seq OWNED BY public.active_storage_blobs.id;
+
+
+--
+-- Name: active_storage_variant_records; Type: TABLE; Schema: public; Owner: clinic
+--
+
+CREATE TABLE public.active_storage_variant_records (
+    id bigint NOT NULL,
+    blob_id bigint NOT NULL,
+    variation_digest character varying NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_variant_records OWNER TO clinic;
+
+--
+-- Name: active_storage_variant_records_id_seq; Type: SEQUENCE; Schema: public; Owner: clinic
+--
+
+CREATE SEQUENCE public.active_storage_variant_records_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_variant_records_id_seq OWNER TO clinic;
+
+--
+-- Name: active_storage_variant_records_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: clinic
+--
+
+ALTER SEQUENCE public.active_storage_variant_records_id_seq OWNED BY public.active_storage_variant_records.id;
+
+
+--
+-- Name: admin_users; Type: TABLE; Schema: public; Owner: clinic
+--
+
+CREATE TABLE public.admin_users (
+    id bigint NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp(6) without time zone,
+    remember_created_at timestamp(6) without time zone,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.admin_users OWNER TO clinic;
+
+--
+-- Name: admin_users_id_seq; Type: SEQUENCE; Schema: public; Owner: clinic
+--
+
+CREATE SEQUENCE public.admin_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.admin_users_id_seq OWNER TO clinic;
+
+--
+-- Name: admin_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: clinic
+--
+
+ALTER SEQUENCE public.admin_users_id_seq OWNED BY public.admin_users.id;
+
+
+--
+-- Name: appointments; Type: TABLE; Schema: public; Owner: clinic
+--
+
+CREATE TABLE public.appointments (
+    id bigint NOT NULL,
+    doctor_id bigint,
+    user_id bigint,
+    date timestamp(6) without time zone,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    open boolean DEFAULT true,
+    recommendation character varying
+);
+
+
+ALTER TABLE public.appointments OWNER TO clinic;
+
+--
+-- Name: appointments_id_seq; Type: SEQUENCE; Schema: public; Owner: clinic
+--
+
+CREATE SEQUENCE public.appointments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.appointments_id_seq OWNER TO clinic;
+
+--
+-- Name: appointments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: clinic
+--
+
+ALTER SEQUENCE public.appointments_id_seq OWNED BY public.appointments.id;
+
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: clinic
+--
+
+CREATE TABLE public.ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.ar_internal_metadata OWNER TO clinic;
+
+--
+-- Name: categories; Type: TABLE; Schema: public; Owner: clinic
+--
+
+CREATE TABLE public.categories (
+    id bigint NOT NULL,
+    name character varying,
+    description character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.categories OWNER TO clinic;
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE; Schema: public; Owner: clinic
+--
+
+CREATE SEQUENCE public.categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.categories_id_seq OWNER TO clinic;
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: clinic
+--
+
+ALTER SEQUENCE public.categories_id_seq OWNED BY public.categories.id;
+
+
+--
+-- Name: doctors; Type: TABLE; Schema: public; Owner: clinic
+--
+
+CREATE TABLE public.doctors (
+    id bigint NOT NULL,
+    first_name character varying,
+    last_name character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp(6) without time zone,
+    remember_created_at timestamp(6) without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp(6) without time zone,
+    last_sign_in_at timestamp(6) without time zone,
+    current_sign_in_ip character varying,
+    last_sign_in_ip character varying,
+    category_id bigint,
+    avatar character varying,
+    phone character varying
+);
+
+
+ALTER TABLE public.doctors OWNER TO clinic;
+
+--
+-- Name: doctors_id_seq; Type: SEQUENCE; Schema: public; Owner: clinic
+--
+
+CREATE SEQUENCE public.doctors_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.doctors_id_seq OWNER TO clinic;
+
+--
+-- Name: doctors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: clinic
+--
+
+ALTER SEQUENCE public.doctors_id_seq OWNED BY public.doctors.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: clinic
+--
+
+CREATE TABLE public.schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO clinic;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: clinic
+--
+
+CREATE TABLE public.users (
+    id bigint NOT NULL,
+    first_name character varying,
+    last_name character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp(6) without time zone,
+    remember_created_at timestamp(6) without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp(6) without time zone,
+    last_sign_in_at timestamp(6) without time zone,
+    current_sign_in_ip character varying,
+    last_sign_in_ip character varying,
+    phone character varying
+);
+
+
+ALTER TABLE public.users OWNER TO clinic;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: clinic
+--
+
+CREATE SEQUENCE public.users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO clinic;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: clinic
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: active_admin_comments id; Type: DEFAULT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.active_admin_comments ALTER COLUMN id SET DEFAULT nextval('public.active_admin_comments_id_seq'::regclass);
+
+
+--
+-- Name: active_storage_attachments id; Type: DEFAULT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.active_storage_attachments ALTER COLUMN id SET DEFAULT nextval('public.active_storage_attachments_id_seq'::regclass);
+
+
+--
+-- Name: active_storage_blobs id; Type: DEFAULT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.active_storage_blobs ALTER COLUMN id SET DEFAULT nextval('public.active_storage_blobs_id_seq'::regclass);
+
+
+--
+-- Name: active_storage_variant_records id; Type: DEFAULT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.active_storage_variant_records ALTER COLUMN id SET DEFAULT nextval('public.active_storage_variant_records_id_seq'::regclass);
+
+
+--
+-- Name: admin_users id; Type: DEFAULT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.admin_users ALTER COLUMN id SET DEFAULT nextval('public.admin_users_id_seq'::regclass);
+
+
+--
+-- Name: appointments id; Type: DEFAULT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.appointments ALTER COLUMN id SET DEFAULT nextval('public.appointments_id_seq'::regclass);
+
+
+--
+-- Name: categories id; Type: DEFAULT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.categories ALTER COLUMN id SET DEFAULT nextval('public.categories_id_seq'::regclass);
+
+
+--
+-- Name: doctors id; Type: DEFAULT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.doctors ALTER COLUMN id SET DEFAULT nextval('public.doctors_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Data for Name: active_admin_comments; Type: TABLE DATA; Schema: public; Owner: clinic
+--
+
+COPY public.active_admin_comments (id, namespace, body, resource_type, resource_id, author_type, author_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: active_storage_attachments; Type: TABLE DATA; Schema: public; Owner: clinic
+--
+
+COPY public.active_storage_attachments (id, name, record_type, record_id, blob_id, created_at) FROM stdin;
+1	avatar	Doctor	1	1	2022-11-07 00:56:01.147158
+2	avatar	Doctor	2	2	2022-11-07 00:57:10.408243
+3	avatar	Doctor	3	3	2022-11-07 00:58:38.508214
+4	avatar	Doctor	4	4	2022-11-07 00:59:16.657542
+5	avatar	Doctor	5	5	2022-11-07 00:59:38.875988
+6	avatar	Doctor	6	6	2022-11-07 01:00:04.14448
+7	avatar	Doctor	7	7	2022-11-07 01:00:28.280258
+8	avatar	Doctor	8	8	2022-11-07 01:03:52.524395
+9	avatar	Doctor	9	9	2022-11-07 01:04:32.310331
+10	avatar	Doctor	10	10	2022-11-07 01:05:26.330279
+11	avatar	Doctor	11	11	2022-11-07 01:05:53.52975
+12	avatar	Doctor	12	12	2022-11-07 01:06:20.817577
+13	avatar	Doctor	13	13	2022-11-07 01:06:41.277531
+14	avatar	Doctor	14	14	2022-11-07 01:06:59.232829
+\.
+
+
+--
+-- Data for Name: active_storage_blobs; Type: TABLE DATA; Schema: public; Owner: clinic
+--
+
+COPY public.active_storage_blobs (id, key, filename, content_type, metadata, service_name, byte_size, checksum, created_at) FROM stdin;
+1	y5begzt6qjufxzymyl0t6qdh9m3c	nutri.jpg	image/jpeg	{"identified":true,"analyzed":true}	cloudinary	18226	aBD/zcLuZJAtX3SAQtig9g==	2022-11-07 00:56:01.144038
+2	qu9bx67wduu37ckrq3gqcrrw4lk3	derma.jpg	image/jpeg	{"identified":true,"analyzed":true}	cloudinary	63293	SvRRWmqICyXXNYZhH7fJGQ==	2022-11-07 00:57:10.405477
+3	jkgu72qylou2h946lvwvk7tzqvy1	psycho.jpg	image/jpeg	{"identified":true,"analyzed":true}	cloudinary	98701	F+B9Jn0lWC4S2IhnIs7mLA==	2022-11-07 00:58:38.505171
+4	6juq8m7phcb6imz2io36vqpzz88z	urologist.jpg	image/jpeg	{"identified":true,"analyzed":true}	cloudinary	49223	BxFu63YZDSGJf+bJ0WdTtg==	2022-11-07 00:59:16.655399
+5	rwxvriseixx7i9lvgnkajq08e7r1	urologist2.jpg	image/jpeg	{"identified":true,"analyzed":true}	cloudinary	35497	bG7X9AEbf5JrPxUFR1q6Fg==	2022-11-07 00:59:38.872447
+6	dayodfdo0qat6sdjzv4d4adhonvh	Dr-Sharmila.jpg	image/jpeg	{"identified":true,"analyzed":true}	cloudinary	151988	yZN3Yv7/Yo29Q1wBYTv4tQ==	2022-11-07 01:00:04.141143
+7	qt94b1ryi3qy0za7bogxqrhx4gi7	800px_COLOURBOX33733831.jpg	image/jpeg	{"identified":true,"analyzed":true}	cloudinary	49448	uY8yTJo25K31hSBrwT6b+g==	2022-11-07 01:00:28.27814
+8	j10gbslrpexmfms2bpdtqxts3o2v	doc.jpg	image/jpeg	{"identified":true,"analyzed":true}	cloudinary	27552	EHvTG+ph0qDLAD6/VKvpxg==	2022-11-07 01:03:52.52226
+9	wmgki911hhvt4twj42mv4nwgjmuz	doc2.jpg	image/jpeg	{"identified":true,"analyzed":true}	cloudinary	22303	JbBGL9bwDkxze5KfX12y8A==	2022-11-07 01:04:32.308284
+10	a84oplikkt0kc9vshh08v5mgv0ah	doc3.jpg	image/jpeg	{"identified":true,"analyzed":true}	cloudinary	54761	J6f3dgFMHe2D25qDNEQizw==	2022-11-07 01:05:26.327431
+11	w989h1edrqi9sw6bx2udueg14asv	docdoc.jpg	image/jpeg	{"identified":true,"analyzed":true}	cloudinary	101054	x7zNzWLqrma1CkpQ0HOwog==	2022-11-07 01:05:53.527628
+12	4295er4c516kbhqcq0e8ff2o0ij0	docdoc1.jpg	image/jpeg	{"identified":true,"analyzed":true}	cloudinary	22303	JbBGL9bwDkxze5KfX12y8A==	2022-11-07 01:06:20.813339
+13	aa7hn42arbzsk99u08kjgfr7i5l2	docfmen.jpg	image/jpeg	{"identified":true,"analyzed":true}	cloudinary	38474	h2tue1TjZFCFOhI2bKIV0A==	2022-11-07 01:06:41.275188
+14	q3188coake7wbj66b9hek2ai2nn7	doc3.jpg	image/jpeg	{"identified":true,"analyzed":true}	cloudinary	54761	J6f3dgFMHe2D25qDNEQizw==	2022-11-07 01:06:59.230621
+\.
+
+
+--
+-- Data for Name: active_storage_variant_records; Type: TABLE DATA; Schema: public; Owner: clinic
+--
+
+COPY public.active_storage_variant_records (id, blob_id, variation_digest) FROM stdin;
+\.
+
+
+--
+-- Data for Name: admin_users; Type: TABLE DATA; Schema: public; Owner: clinic
+--
+
+COPY public.admin_users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, created_at, updated_at) FROM stdin;
+1	admin@example.com	$2a$12$fB76075PT9s/oiXkrGcB5.EH05U360WDFltN/gcz6w3d./gx0cx7.	\N	\N	\N	2022-11-07 00:52:01.649701	2022-11-07 02:23:20.459362
+\.
+
+
+--
+-- Data for Name: appointments; Type: TABLE DATA; Schema: public; Owner: clinic
+--
+
+COPY public.appointments (id, doctor_id, user_id, date, created_at, updated_at, open, recommendation) FROM stdin;
+3	12	12	2023-05-03 03:01:00	2022-11-07 01:08:55.688995	2022-11-07 01:08:55.688995	t	
+4	12	11	2021-04-04 03:04:00	2022-11-07 01:09:12.719667	2022-11-07 01:09:12.719667	t	
+7	13	8	2024-03-06 11:55:00	2022-11-07 01:10:15.174573	2022-11-07 01:10:15.174573	t	
+8	13	7	2021-03-06 09:37:00	2022-11-07 01:10:39.788225	2022-11-07 01:10:39.788225	t	
+11	4	4	2022-06-06 06:05:00	2022-11-07 01:11:33.4885	2022-11-07 01:11:33.4885	t	
+12	4	3	2024-05-05 12:17:00	2022-11-07 01:11:47.435371	2022-11-07 01:11:47.435371	t	
+13	14	2	2025-09-19 18:46:00	2022-11-07 01:12:08.373958	2022-11-07 01:12:08.373958	t	
+15	5	1	2024-04-04 06:05:00	2022-11-07 01:13:03.555894	2022-11-07 01:13:03.555894	t	
+16	5	2	2021-06-07 21:32:00	2022-11-07 01:13:16.73976	2022-11-07 01:13:16.73976	t	
+18	6	3	2021-05-05 03:06:00	2022-11-07 01:13:54.850425	2022-11-07 01:13:54.850425	t	
+19	6	4	2025-08-09 08:08:00	2022-11-07 01:14:10.224542	2022-11-07 01:14:10.224542	t	
+20	7	5	2023-09-07 07:06:00	2022-11-07 01:14:33.889021	2022-11-07 01:14:33.889021	t	
+21	7	6	2023-06-07 07:07:00	2022-11-07 01:14:53.209761	2022-11-07 01:14:53.209761	t	
+22	8	7	2022-06-07 08:09:00	2022-11-07 01:15:24.354313	2022-11-07 01:15:24.354313	t	
+23	8	8	2020-08-11 09:14:00	2022-11-07 01:15:40.738073	2022-11-07 01:15:40.738073	t	
+26	10	11	2022-07-11 10:10:00	2022-11-07 01:16:38.443352	2022-11-07 01:16:38.443352	t	
+27	10	12	2022-07-08 10:10:00	2022-11-07 01:16:57.196334	2022-11-07 01:16:57.196334	t	
+28	11	13	2026-09-11 11:12:00	2022-11-07 01:17:12.017993	2022-11-07 01:17:12.017993	t	
+29	11	14	2025-08-11 16:15:00	2022-11-07 01:17:26.793434	2022-11-07 01:17:26.793434	t	
+14	14	1	2025-09-08 08:11:00	2022-11-07 01:12:27.672728	2022-11-07 01:25:41.822533	f	Sport and chill.
+6	2	9	2022-05-06 02:03:00	2022-11-07 01:09:50.955036	2022-11-07 02:34:13.051707	t	
+5	2	10	2019-04-04 02:03:00	2022-11-07 01:09:31.970065	2022-11-07 02:34:26.197256	f	Sport and Chill.
+1	1	14	2022-07-06 04:03:00	2022-11-07 01:08:03.417137	2022-11-07 02:34:59.873579	f	Chill for 2 monts.
+30	3	1	2022-11-23 03:34:00	2022-11-07 01:34:18.96425	2022-11-07 01:43:38.896701	t	
+9	3	6	2023-07-06 04:05:00	2022-11-07 01:11:03.571082	2022-11-07 01:45:32.01402	t	
+2	1	13	2024-03-03 02:04:00	2022-11-07 01:08:32.869606	2022-11-07 02:35:12.386075	f	Sport
+32	3	13	2022-11-24 04:43:00	2022-11-07 02:43:49.898605	2022-11-07 02:43:49.898605	t	\N
+10	3	5	2020-07-06 13:10:00	2022-11-07 01:11:18.624824	2022-11-07 02:45:37.396725	f	Sport
+25	9	10	2023-08-09 09:08:00	2022-11-07 01:16:20.154023	2022-11-07 01:52:49.139423	f	
+24	9	9	2026-12-18 18:18:00	2022-11-07 01:15:58.359305	2022-11-07 02:03:16.727356	f	
+31	9	1	2022-11-24 03:46:00	2022-11-07 01:46:45.48361	2022-11-07 02:23:14.343255	t	
+\.
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: clinic
+--
+
+COPY public.ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2022-11-07 00:52:00.746689	2022-11-07 00:52:00.746689
+schema_sha1	6ea25f3d444fe3fbf01fce9a806b037a6cfbea83	2022-11-07 00:52:00.753989	2022-11-07 00:52:00.753989
+\.
+
+
+--
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: clinic
+--
+
+COPY public.categories (id, name, description, created_at, updated_at) FROM stdin;
+1	Urologist	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla, felis sed faucibus maximus, ligula dolor ultrices purus, sit amet rutrum magna elit a sem.	2022-11-07 00:52:01.660192	2022-11-07 00:52:01.660192
+2	Nutritionist	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla, felis sed faucibus maximus, ligula dolor ultrices purus, sit amet rutrum magna elit a sem.	2022-11-07 00:52:01.663946	2022-11-07 00:52:01.663946
+3	Dermatologist	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla, felis sed faucibus maximus, ligula dolor ultrices purus, sit amet rutrum magna elit a sem.	2022-11-07 00:52:01.666453	2022-11-07 00:52:01.666453
+4	Psychotherapist	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla, felis sed faucibus maximus, ligula dolor ultrices purus, sit amet rutrum magna elit a sem.	2022-11-07 00:52:01.668869	2022-11-07 00:52:01.668869
+5	Pediatrist	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla, felis sed faucibus maximus, ligula dolor ultrices purus, sit amet rutrum magna elit a sem.	2022-11-07 00:52:01.671327	2022-11-07 00:52:01.671327
+6	Orthopaedist	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla, felis sed faucibus maximus, ligula dolor ultrices purus, sit amet rutrum magna elit a sem.	2022-11-07 00:52:01.673859	2022-11-07 00:52:01.673859
+7	Traumatologist	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla, felis sed faucibus maximus, ligula dolor ultrices purus, sit amet rutrum magna elit a sem.	2022-11-07 00:52:01.676262	2022-11-07 00:52:01.676262
+\.
+
+
+--
+-- Data for Name: doctors; Type: TABLE DATA; Schema: public; Owner: clinic
+--
+
+COPY public.doctors (id, first_name, last_name, created_at, updated_at, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, category_id, avatar, phone) FROM stdin;
+12	Johnny	Corleone	2022-11-07 00:52:04.156349	2022-11-07 01:06:20.819547	johnnycorleone@gmail.com	$2a$12$8A0nKjb/lBdVpTEtiiQNmeXuAnaZqd.JjUYVUko9/sG0lm2aCaLI.	\N	\N	\N	0	\N	\N	\N	\N	6	\N	+380534349089
+13	Mari	Corleone	2022-11-07 00:52:04.360187	2022-11-07 01:06:41.279104	maricorleone@gmail.com	$2a$12$LBmxJEjG2bxkjQxKd7Ju/eNqQnZu9Hk.FuxjN7h9gA1k9IIODrSJ.	\N	\N	\N	0	\N	\N	\N	\N	7	\N	+380934349089
+4	Fredo	Corleone	2022-11-07 00:52:02.521948	2022-11-07 00:59:16.660207	fredocorleone@gmail.com	$2a$12$3HHEp4WxQoHg4WxEVNmEZ.zsOqy.PO9hepCJr7lZaytfiTRUwPjTG	\N	\N	\N	0	\N	\N	\N	\N	2	\N	+380434349089
+14	Albert	Corleone	2022-11-07 00:52:04.563968	2022-11-07 01:06:59.23453	albertcorleone@gmail.com	$2a$12$TbQCUl/ErdshJWztUP3jyup6IVjI8MerxnU90HYimad9tItRUtS8O	\N	\N	\N	0	\N	\N	\N	\N	7	\N	+380534319089
+5	Vincent	Corleone	2022-11-07 00:52:02.726239	2022-11-07 00:59:38.87803	vincentcorleone@gmail.com	$2a$12$oC2sSbmk6OPwZk3/wU26lebdu/./rzYbF2YD0JXH2aEAHDxr9oxZO	\N	\N	\N	0	\N	\N	\N	\N	3	\N	+380434349084
+6	Connie	Corleone	2022-11-07 00:52:02.930127	2022-11-07 01:00:04.146521	conniecorleone@gmail.com	$2a$12$JkDX12KxsN/v227WyMIuxOBIoT4c9mHQS4lBWLl.681cR5Yp1BVnK	\N	\N	\N	0	\N	\N	\N	\N	3	\N	+380434346745
+7	Anthony	Corleone	2022-11-07 00:52:03.137834	2022-11-07 01:00:28.281809	anthonycorleone@gmail.com	$2a$12$c/x1y4r5xNnCkJrXDjOdaONngLpUTsp5NEqm/..FxblGtQVYvSzNe	\N	\N	\N	0	\N	\N	\N	\N	4	\N	+380444349089
+8	Roberto	Corleone	2022-11-07 00:52:03.34173	2022-11-07 01:03:52.526161	robertocorleone@gmail.com	$2a$12$m91DjEa5tlpHuJfU3kncferjNsLVUDBCODbkr7zoTCaqiW7Fx36W6	\N	\N	\N	0	\N	\N	\N	\N	4	\N	+380634349089
+9	Alexander	Corleone	2022-11-07 00:52:03.544783	2022-11-07 01:47:48.377592	alexandercorleone@gmail.com	$2a$12$SuALRZbwSA48RYlpZ5Sm9.zVYoJbASnz6p3jKanx9QLcwiI20hWU6	\N	\N	\N	1	2022-11-07 01:47:48.377354	2022-11-07 01:47:48.377354	::1	::1	5	\N	+380234349089
+10	Cristiano	Corleone	2022-11-07 00:52:03.748562	2022-11-07 01:05:26.333308	cristianocorleone@gmail.com	$2a$12$uhTS1xHHj3DzoL7Bbs8iLOtuR7nP0xWU2jVILhrMV4bsoWIE1e8ty	\N	\N	\N	0	\N	\N	\N	\N	5	\N	+380434399089
+2	Michael	Corleone	2022-11-07 00:52:02.112609	2022-11-07 02:29:59.458106	michaelcorleone@gmail.com	$2a$12$pkzqtZ6pVG0IGciBFBE/9egdosQSDfE59RAZH586.hv/I5TbQ7tBa	\N	\N	\N	2	2022-11-07 02:29:59.457883	2022-11-07 01:27:09.946648	::1	::1	1	\N	+380734649007
+11	Leonardo	Corleone	2022-11-07 00:52:03.952256	2022-11-07 01:05:53.531694	leonadrocorleone@gmail.com	$2a$12$k5Kn7dg5mJWOymKOxj3hAOeBFi0T.OSI/V64wzhMNR7l.oaOb0o9G	\N	\N	\N	0	\N	\N	\N	\N	6	\N	+380434349000
+1	Vito	Corleone	2022-11-07 00:52:01.907719	2022-11-07 02:34:45.264205	vitocorleone@gmail.com	$2a$12$zZz/6SZuk7Wjo0kriXv0oOfkdB1RNom1q67DIFzmj.1q4OjGcnaCi	\N	\N	\N	3	2022-11-07 02:34:45.263982	2022-11-07 02:24:06.954348	::1	::1	1	\N	+380524349089
+3	Santino	Corleone	2022-11-07 00:52:02.318235	2022-11-07 02:44:30.470584	santinocorleone@gmail.com	$2a$12$Yx2.a6djgrhdXpbTcMPQVeX5rqP/zSmThCpC.z8Luto/CU/aDjBCu	\N	\N	\N	2	2022-11-07 02:44:30.47023	2022-11-07 01:35:03.922414	::1	::1	2	\N	+380734340734
+\.
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: clinic
+--
+
+COPY public.schema_migrations (version) FROM stdin;
+20221106191253
+20221103160931
+20221103160939
+20221103161617
+20221103161949
+20221103162645
+20221103183151
+20221103195818
+20221103200051
+20221104023743
+20221104024151
+20221104041120
+20221104041553
+20221104055028
+20221104202204
+20221105233331
+20221106040001
+20221106182107
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: clinic
+--
+
+COPY public.users (id, first_name, last_name, created_at, updated_at, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, phone) FROM stdin;
+2	Peter	Clemenza	2022-11-07 00:52:04.978977	2022-11-07 00:52:04.978977	peterclemenza@gmail.com	$2a$12$SDJUFxMGEpacGB2ZZ5lZseJT4nnkbmTlkaGs3LE4xWUTzpR1ZwNRG	\N	\N	\N	0	\N	\N	\N	\N	+380534311089
+3	Frank	Pantangeli	2022-11-07 00:52:05.182248	2022-11-07 00:52:05.182248	frankpantangeli@gmail.com	$2a$12$UcjCoa9YOiG9Me2GdmDyzuxnWqr7VPiw47IYKFSANDzO1j0HkRZuC	\N	\N	\N	0	\N	\N	\N	\N	+380534319189
+4	Emilio	Barzini	2022-11-07 00:52:05.384303	2022-11-07 00:52:05.384303	emiliobarzini@gmail.com	$2a$12$DlNMgEXdgIgO38GKwoqg6e67Ro0bfk8buMypDNVJthKG470oDw54u	\N	\N	\N	0	\N	\N	\N	\N	+380534319019
+5	Carlo	Rizzi	2022-11-07 00:52:05.586352	2022-11-07 00:52:05.586352	carlorizzi@gmail.com	$2a$12$W/TjG.IJu2fJ185TfLU./.kNpAFJCJ6IYAUArMYs.yeJVZ6TpT3Za	\N	\N	\N	0	\N	\N	\N	\N	+380534329089
+6	Virgil	Sollozzo	2022-11-07 00:52:05.789012	2022-11-07 00:52:05.789012	virgilsollozzo@gmail.com	$2a$12$lq.5lRWhJTfocWVyexUYpO8h60E3papdg4WUOlMblMwBY5D6N/jcK	\N	\N	\N	0	\N	\N	\N	\N	+380533319089
+7	Amerigo	Bonasera	2022-11-07 00:52:05.992192	2022-11-07 00:52:05.992192	amerigobonasera@gmail.com	$2a$12$YtnxZo/b.woJ4s46aku3OOlsvCEEpAFkKavSwUJPrEMZ857uCMr8G	\N	\N	\N	0	\N	\N	\N	\N	+380534819089
+8	Cardinal	Lamberto	2022-11-07 00:52:06.194306	2022-11-07 00:52:06.194306	cardinallamberto@gmail.com	$2a$12$Oc9DISY4lmXsWAUW6IZsauk.KSX6jCMcPr6y0xuSsy5o/3bDGQfbO	\N	\N	\N	0	\N	\N	\N	\N	+380534379089
+9	Antonio	Andolini	2022-11-07 00:52:06.3964	2022-11-07 00:52:06.3964	antonioandolini@gmail.com	$2a$12$.aD1/Jq5lVZkmatI6fF7TuqrC3ohe7tODXhlGBTa0VLzpS7XLj.8e	\N	\N	\N	0	\N	\N	\N	\N	+380534313089
+10	Paolo	Andolini	2022-11-07 00:52:06.598633	2022-11-07 00:52:06.598633	paoloandolini@gmail.com	$2a$12$fYlzO4m7pDNnnWMwpb.FrOnwjQW7/Dn2ZgXX3oMvjY/xO7ka3RCUC	\N	\N	\N	0	\N	\N	\N	\N	+380534313189
+11	Tom	Hagen	2022-11-07 00:52:06.800867	2022-11-07 00:52:06.800867	tomhagen@gmail.com	$2a$12$F8xIs.SHVYBMasmzybYPF./H9mxwxDhytljVxi7M1UX6kVFBTifYG	\N	\N	\N	0	\N	\N	\N	\N	+380534569089
+12	Vincent	Mancini	2022-11-07 00:52:07.003143	2022-11-07 00:52:07.003143	vincentmancini@gmail.com	$2a$12$sr1sI2EJSWBZVUBPaQ5XSu912JZ2331aJZ7FWwrSCSIBymqLIMmn2	\N	\N	\N	0	\N	\N	\N	\N	+380531119089
+14	Riccardo	Tattaglia	2022-11-07 00:52:07.410072	2022-11-07 01:23:27.254584	riccardotattaglia@gmail.com	$2a$12$qCvgrW9nbJAAiUluqom7MOIq/ei3Nwo9pku7.icsgPZ3brorpd51u	\N	\N	\N	1	2022-11-07 01:23:27.254381	2022-11-07 01:23:27.254381	::1	::1	+380534311740
+1	Luca	Brasi	2022-11-07 00:52:04.775804	2022-11-07 01:46:27.272444	lucabrasi@gmail.com	$2a$12$oJkLEGOzhyQINngdw58xCennvnmMrTiyWY11kFBj4Iw8MR9Zs.Ixq	\N	\N	\N	4	2022-11-07 01:46:27.272209	2022-11-07 01:34:09.770247	::1	::1	+380531319089
+13	Johnny	Fontane	2022-11-07 00:52:07.207423	2022-11-07 02:43:38.627118	johnnyfontane@gmail.com	$2a$12$GTp2smP1lNnbxmb6pTNXiOwArz55ROGrs7ZtdB1G9wiYSjrMVlydy	\N	\N	\N	2	2022-11-07 02:43:38.626879	2022-11-07 02:35:35.409307	::1	::1	+380534311234
+\.
+
+
+--
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: clinic
+--
+
+SELECT pg_catalog.setval('public.active_admin_comments_id_seq', 1, false);
+
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: clinic
+--
+
+SELECT pg_catalog.setval('public.active_storage_attachments_id_seq', 14, true);
+
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: clinic
+--
+
+SELECT pg_catalog.setval('public.active_storage_blobs_id_seq', 14, true);
+
+
+--
+-- Name: active_storage_variant_records_id_seq; Type: SEQUENCE SET; Schema: public; Owner: clinic
+--
+
+SELECT pg_catalog.setval('public.active_storage_variant_records_id_seq', 1, false);
+
+
+--
+-- Name: admin_users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: clinic
+--
+
+SELECT pg_catalog.setval('public.admin_users_id_seq', 1, true);
+
+
+--
+-- Name: appointments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: clinic
+--
+
+SELECT pg_catalog.setval('public.appointments_id_seq', 32, true);
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: clinic
+--
+
+SELECT pg_catalog.setval('public.categories_id_seq', 7, true);
+
+
+--
+-- Name: doctors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: clinic
+--
+
+SELECT pg_catalog.setval('public.doctors_id_seq', 14, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: clinic
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 14, true);
+
+
+--
+-- Name: active_admin_comments active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.active_admin_comments
+    ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: active_storage_attachments active_storage_attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.active_storage_attachments
+    ADD CONSTRAINT active_storage_attachments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: active_storage_blobs active_storage_blobs_pkey; Type: CONSTRAINT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.active_storage_blobs
+    ADD CONSTRAINT active_storage_blobs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: active_storage_variant_records active_storage_variant_records_pkey; Type: CONSTRAINT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.active_storage_variant_records
+    ADD CONSTRAINT active_storage_variant_records_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: admin_users admin_users_pkey; Type: CONSTRAINT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.admin_users
+    ADD CONSTRAINT admin_users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: appointments appointments_pkey; Type: CONSTRAINT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.appointments
+    ADD CONSTRAINT appointments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: categories categories_pkey; Type: CONSTRAINT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.categories
+    ADD CONSTRAINT categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: doctors doctors_pkey; Type: CONSTRAINT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.doctors
+    ADD CONSTRAINT doctors_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_active_admin_comments_on_author; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE INDEX index_active_admin_comments_on_author ON public.active_admin_comments USING btree (author_type, author_id);
+
+
+--
+-- Name: index_active_admin_comments_on_namespace; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE INDEX index_active_admin_comments_on_namespace ON public.active_admin_comments USING btree (namespace);
+
+
+--
+-- Name: index_active_admin_comments_on_resource; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE INDEX index_active_admin_comments_on_resource ON public.active_admin_comments USING btree (resource_type, resource_id);
+
+
+--
+-- Name: index_active_storage_attachments_on_blob_id; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE INDEX index_active_storage_attachments_on_blob_id ON public.active_storage_attachments USING btree (blob_id);
+
+
+--
+-- Name: index_active_storage_attachments_uniqueness; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE UNIQUE INDEX index_active_storage_attachments_uniqueness ON public.active_storage_attachments USING btree (record_type, record_id, name, blob_id);
+
+
+--
+-- Name: index_active_storage_blobs_on_key; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_blobs USING btree (key);
+
+
+--
+-- Name: index_active_storage_variant_records_uniqueness; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE UNIQUE INDEX index_active_storage_variant_records_uniqueness ON public.active_storage_variant_records USING btree (blob_id, variation_digest);
+
+
+--
+-- Name: index_admin_users_on_email; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE UNIQUE INDEX index_admin_users_on_email ON public.admin_users USING btree (email);
+
+
+--
+-- Name: index_admin_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE UNIQUE INDEX index_admin_users_on_reset_password_token ON public.admin_users USING btree (reset_password_token);
+
+
+--
+-- Name: index_appointments_on_doctor_id; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE INDEX index_appointments_on_doctor_id ON public.appointments USING btree (doctor_id);
+
+
+--
+-- Name: index_appointments_on_user_id; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE INDEX index_appointments_on_user_id ON public.appointments USING btree (user_id);
+
+
+--
+-- Name: index_categories_on_name; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE UNIQUE INDEX index_categories_on_name ON public.categories USING btree (name);
+
+
+--
+-- Name: index_doctors_on_category_id; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE INDEX index_doctors_on_category_id ON public.doctors USING btree (category_id);
+
+
+--
+-- Name: index_doctors_on_email; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE UNIQUE INDEX index_doctors_on_email ON public.doctors USING btree (email);
+
+
+--
+-- Name: index_doctors_on_phone; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE UNIQUE INDEX index_doctors_on_phone ON public.doctors USING btree (phone);
+
+
+--
+-- Name: index_doctors_on_reset_password_token; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE UNIQUE INDEX index_doctors_on_reset_password_token ON public.doctors USING btree (reset_password_token);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON public.users USING btree (email);
+
+
+--
+-- Name: index_users_on_phone; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE UNIQUE INDEX index_users_on_phone ON public.users USING btree (phone);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: clinic
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING btree (reset_password_token);
+
+
+--
+-- Name: doctors fk_rails_58569cee10; Type: FK CONSTRAINT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.doctors
+    ADD CONSTRAINT fk_rails_58569cee10 FOREIGN KEY (category_id) REFERENCES public.categories(id);
+
+
+--
+-- Name: appointments fk_rails_8db8e1e8a5; Type: FK CONSTRAINT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.appointments
+    ADD CONSTRAINT fk_rails_8db8e1e8a5 FOREIGN KEY (doctor_id) REFERENCES public.doctors(id);
+
+
+--
+-- Name: active_storage_variant_records fk_rails_993965df05; Type: FK CONSTRAINT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.active_storage_variant_records
+    ADD CONSTRAINT fk_rails_993965df05 FOREIGN KEY (blob_id) REFERENCES public.active_storage_blobs(id);
+
+
+--
+-- Name: appointments fk_rails_9e31213785; Type: FK CONSTRAINT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.appointments
+    ADD CONSTRAINT fk_rails_9e31213785 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: active_storage_attachments fk_rails_c3b3935057; Type: FK CONSTRAINT; Schema: public; Owner: clinic
+--
+
+ALTER TABLE ONLY public.active_storage_attachments
+    ADD CONSTRAINT fk_rails_c3b3935057 FOREIGN KEY (blob_id) REFERENCES public.active_storage_blobs(id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
